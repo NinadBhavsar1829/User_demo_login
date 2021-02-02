@@ -1,0 +1,99 @@
+{
+  "server": {
+    "port": 3400
+  },
+  "mongoDB": {
+    "connectionString": "mongodb+srv://developer:T1rXxznhR4h2WIpA@clusternb.30ow2.mongodb.net/common_db?retryWrites=true&w=majority"
+  },
+  "swagger": {
+    "host": "user-demo-login.herokuapp.com",
+    "basePath": "/",
+    "schemes": [
+      "https"
+    ]
+  },
+  "token": {
+    "secret": "secret@123"
+  },
+  "projectDetails": {
+    "orgmaster": {
+      "url": "http://localhost:8697",
+      "routes": {
+        "unit": {
+          "trigger": {
+            "method": "PUT",
+            "url": "/unit/ENTTrigger",
+            "content-type": "application/json"
+          }
+        }
+      }
+    },
+    "fldconfig": {
+      "url": "http://10.26.24.15:30603/fldconfig",
+      "routes": {
+        "unit": {
+          "trigger": {
+            "method": "PUT",
+            "url": "/unit/ENTTriger",
+            "content-type": "application/json"
+          }
+        }
+      }
+    },
+    "fileMgmt": {
+      "upload": {
+        "url": "http://commonutilsdev.ril.com/docmgmt/upload/s3/fileFS",
+        "folder_id": "5f2257f36562b00018ee76f3",
+        "application_password": "goziyokaha",
+        "method": "post",
+        "metadataCollection": "dms_file_mgmt"
+      },
+      "download": {
+        "url": "http://commonutilsdev.ril.com/docmgmt/download/s3/fileFSRequest",
+        "application_password": "goziyokaha",
+        "method": "post"
+      }
+    }
+  },
+  "appMgmt": {
+    "useMySSO": true,
+    "url": "http://ssodev.ril.com/decryptHeader",
+    "bootstrap_servers": "localhost:9092",
+    "requestLogger": "mongodb",
+    "kafkaOptions": {
+      "topics": [
+        "realization_details",
+        "ebrc_details",
+        "sd_details"
+      ],
+      "groupId": "ftpbenefits",
+      "consumerOptions": {
+        "clientId": "ftpbenefits",
+        "brokers": [
+          "10.26.24.38:9092"
+        ],
+        "maxBytes": 50485760,
+        "maxBytesPerPartition": 50485760
+      },
+      "consumerOptions_secured": {
+        "clientId": "boilerplate",
+        "brokers": [
+          "10.26.24.38:9093"
+        ],
+        "authenticationTimeout": 3000,
+        "reauthenticationThreshold": 3000,
+        "ssl": {
+          "rejectUnauthorized": false
+        },
+        "sasl": {
+          "mechanism": "scram-sha-256",
+          "username": "FMS_RCOL_DEV",
+          "password": "Rcoll_Dev@123"
+        },
+        "connectionTimeout": 3000,
+        "maxBytes": 50485760,
+        "maxBytesPerPartition": 50485760
+      }
+    }
+  }
+}

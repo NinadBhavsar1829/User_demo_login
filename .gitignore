@@ -1,0 +1,25 @@
+# Logs
+
+
+# Unnecessary files, folders
+zuseless/
+index_old.js
+
+#SonarQube files, folders
+.scannerwork/
+sonar-project.properties
+
+# Dependency directories
+node_modules_1
+node_modules
+
+# Output of 'npm pack'
+*.tgz
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history

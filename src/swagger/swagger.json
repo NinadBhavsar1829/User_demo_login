@@ -1,0 +1,310 @@
+{
+  "info": {
+    "description": "This project is simple user-login-demo made for CODE-Test (Antarctica Global).",
+    "title": "User Login Demo",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3400",
+  "basePath": "/",
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "paths": {
+    "/approutes/registeruser": {
+      "post": {
+        "summary": "API for user registration",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/registeruser"
+            }
+          }
+        ],
+        "description": "",
+        "tags": [
+          "User-Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          }
+        }
+      }
+    },
+    "/approutes/login": {
+      "post": {
+        "summary": "API for log in",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "description": "",
+        "tags": [
+          "User-Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          }
+        }
+      }
+    },
+    "/approutes/getuserlist": {
+      "post": {
+        "summary": "API to search or get the Users",
+        "parameters": [
+          {
+            "name": "auth-token",
+            "in": "header",
+            "description": "Enter Token here",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/getUserList"
+            }
+          }
+        ],
+        "description": "",
+        "tags": [
+          "User-Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/GlobalResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getUserList": {
+      "required": [],
+      "properties": {
+        "search_text": {
+          "type": "string",
+          "description": "",
+          "example": "Ninad"
+        },
+        "sort_by": {
+          "type": "array",
+          "description": "",
+          "example": [
+            "first_name"
+          ]
+        },
+        "page_no": {
+          "type": "number",
+          "description": "",
+          "example": 1
+        },
+        "records_per_page": {
+          "type": "number",
+          "description": "",
+          "example": 1
+        }
+      }
+    },
+    "registeruser": {
+      "required": [],
+      "properties": {
+        "first_name": {
+          "type": "string",
+          "description": "",
+          "example": "Ninad"
+        },
+        "last_name": {
+          "type": "string",
+          "description": "",
+          "example": "Bhavsar"
+        },
+        "email_id": {
+          "type": "string",
+          "description": "",
+          "example": "nb@mail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "",
+          "example": "pass@123"
+        },
+        "org_name": {
+          "type": "string",
+          "description": "",
+          "example": "Antarctica Globe"
+        }
+      }
+    },
+    "login": {
+      "required": [],
+      "properties": {
+        "email_id": {
+          "type": "string",
+          "description": "",
+          "example": "nb@mail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "",
+          "example": "pass@123"
+        }
+      }
+    },
+    "GlobalResponse": {
+      "required": [
+        "OPStatus",
+        "data"
+      ],
+      "properties": {
+        "OPStatus": {
+          "$ref": "#/definitions/OPStatus"
+        },
+        "data": {
+          "type": "object",
+          "description": ""
+        }
+      }
+    },
+    "OPStatus": {
+      "required": [
+        "StatusCode",
+        "Status",
+        "Description",
+        "StatusType",
+        "Message"
+      ],
+      "properties": {
+        "StatusCode": {
+          "type": "string",
+          "description": ""
+        },
+        "Status": {
+          "type": "string",
+          "description": ""
+        },
+        "Description": {
+          "type": "string",
+          "description": ""
+        },
+        "StatusType": {
+          "type": "string",
+          "description": ""
+        },
+        "Message": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    }
+  },
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": [
+    {
+      "name": "User-Controller",
+      "description": "Operations pertaining to Users' Interactions."
+    }
+  ]
+}
